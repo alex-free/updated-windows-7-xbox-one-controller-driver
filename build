@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Updated Windows 7 Xbox One Controller Driver build script
+version="v1.0"
+release_name="updated-windows-7-xbox-one-controller-driver-$version"
+release_files="*.md images x86 x86_64"
+
+cd "$(dirname "$0")"
+
+rm -rf "$release_name" "$release_name".zip
+
+if [ "$1" == "clean" ]; then
+    exit 0
+fi
+
+mkdir "$release_name"
+cp -r ${release_files} "$release_name"
+
+chmod -R 777 "$release_name"
+zip -r "$release_name".zip "$release_name"
